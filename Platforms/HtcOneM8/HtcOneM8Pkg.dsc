@@ -43,3 +43,10 @@
   # SMBIOS
   gMSM8974PkgTokenSpaceGuid.PcdSmbiosSystemModel|"HTC One M8"
   gMSM8974PkgTokenSpaceGuid.PcdSmbiosSystemRetailModel|"HTC M8"
+
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoHorizontalResolution|1080
+  gEfiMdeModulePkgTokenSpaceGuid.PcdVideoVerticalResolution|1920
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoHorizontalResolution|1080
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupVideoVerticalResolution|1920
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutRow|160
+  gEfiMdeModulePkgTokenSpaceGuid.PcdSetupConOutColumn|120
