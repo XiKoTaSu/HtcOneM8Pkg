@@ -9,7 +9,7 @@ export WORKSPACE=$PWD/workspace
 rm -rf workspace/Build
 
 NUM_CPUS=$((`getconf _NPROCESSORS_ONLN` + 2))
-build -n $NUM_CPUS -a ARM -t CLANGDWARF -p Platforms/HtcOneM8/HtcOneM8Pkg.dsc -b DEBUG
+GCC5_AARCH64_PREFIX=aarch64-linux-gnu- build -s -n 4 -a AARCH64 -t GCC5 -p Platforms/HtcOneM8/HtcOneM8Pkg.dsc -b DEBUG
 
 chmod +x build_boot_shim.sh
 ./build_boot_shim.sh
