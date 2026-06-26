@@ -1,0 +1,44 @@
+name: build
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v3
+    
+   # - name: Install required packages
+   #   run: |
+   #     sudo dpkg --add-architecture i386
+   #     sudo install -d -m 0755 /etc/apt/keyrings
+   #     sudo wget -O /etc/apt/keyrings/winehq-archive.key \
+   #       https://dl.winehq.org/wine-builds/winehq.key
+   #     sudo chmod 644 /etc/apt/keyrings/winehq-archive.key
+   #     sudo wget -O /etc/apt/sources.list.d/winehq-noble.sources \
+   #       https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
+   #     sudo apt-get update
+   #     sudo apt-get install --install-recommends winehq-stable libsdl2-2.0-0 libsdl2-dev  build-essential uuid-dev clang llvm iasl nasm gcc-aarch64-linux-gnu abootimg python3-pil python3-git gettext libgcc-s1:i386 libstdc++6:i386  -y
+    - name: Prepare environment
+      run: |
+        sudo apt update
+        sudo apt install -y \
+            build-essential uuid-dev iasl git nasm python3 python-is-python3 \
+            crossbuild-essential-arm64 crossbuild-essential-armhf \
+            bc abootimg gzip wine
+        sudo apt install python3 python2 gcc-aarch64-linux-gnu
+        #sudo rm /bin/python
+        #sudo ln -s /bin/python2.7 /bin/python
+          
+    - name: CI Build
+      run: |
+        chmod +x setup_and_build.sh && ./setup_and_build.sh
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: uefi
+        path: ./ImageResources/HtcOneM8/uefi.img
