@@ -19,12 +19,8 @@
 
 / {
 	/* Actually htc,project-id */
-	qcom,msm-id = <QCOM_ID_APQ8074PRO_AC 0x10000>,
-		      <QCOM_ID_MSM8274PRO_AC 0x10000>,
-		      <QCOM_ID_MSM8674PRO_AC 0x10000>,
-		      <QCOM_ID_MSM8974PRO_AC 0x10000>;
-
-    qcom,board-id = <QCOM_BOARD_ID_MTP 0>;
+	qcom,msm-id = <0xd0 0x10000 0xd1 0x10000 0xd3 0x10000 0xd4 0x10000 0xd6 0x10000 0xd7 0x10000 0xd9 0x10000 0xda 0x10000>;
+	qcom,board-id = <0x08 0x00>;
 
 	htc-m8 {
 		model = "HTC One (M8)";
