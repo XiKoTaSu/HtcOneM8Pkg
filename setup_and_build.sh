@@ -4,9 +4,8 @@ set -e
 rm -rf ImageResources/HtcOneM8/uefi.img ImageResources/HtcOneM8/*.bin BootShim/*.bin
 export PACKAGES_PATH=$PWD/../edk2:$PWD/../edk2-platforms:$PWD
 export WORKSPACE=$PWD/workspace
+make -C ../edk2/BaseTools
 . ../edk2/edksetup.sh
-
-rm -rf workspace/Build
 
 NUM_CPUS=$((`getconf _NPROCESSORS_ONLN` + 2))
 GCC5_AARCH64_PREFIX=aarch64-linux-gnu- build -s -n 4 -a AARCH64 -t GCC5 -p Platforms/HtcOneM8/HtcOneM8Pkg.dsc -b DEBUG
