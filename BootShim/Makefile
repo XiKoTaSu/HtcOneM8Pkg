@@ -1,10 +1,9 @@
 
-
-ARCH              = arm
-TARGET            = arm-none-eabi
-CROSS_COMPILE     = $(TARGET)-
-CC                = $(CROSS_COMPILE)gcc
-OBJCOPY           = $(CROSS_COMPILE)objcopy
+ARCH              = arm64
+TARGET            = aarch64-linux-gnu
+CC                = clang
+CFLAGS            = --target=$(TARGET)
+OBJCOPY           = llvm-objcopy
 
 all: BootShim.elf BootShim.bin
 
